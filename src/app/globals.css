@@ -44,7 +44,7 @@ body {
 }
 .backlit {
   filter: blur(0.7px);
-  text-shadow: 2px 2px 20px rgba(0, 255, 0, 0.7);
+  text-shadow: 2px 2px 24px rgba(0, 255, 0, 0.7);
 }
 
 .terminal {
@@ -84,7 +84,7 @@ body {
   width: 100%;
   height: 100%;
   z-index: 2;
-  animation: pan-overlay 16s linear infinite;
+  animation: pan-overlay 24s linear infinite;
 }
 
 .terminal-content {
@@ -106,7 +106,32 @@ body {
 
 .footer {
   border-top: 2px solid #00E500;
+  box-shadow: 0px 0px 32px rgba(0, 255, 0, 0.6);
   position: absolute;
   bottom: 0;
   width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@keyframes horizontal-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(calc(-1 * var(--content-width)), 0, 0);
+  }
+}
+.footer-content {
+  animation: horizontal-scroll 24s linear infinite;
+}
+
+.footer-text {
+  color:#00E500;
+  font-family: "M PLUS 1 Code", monospace;
+  font-size: 28px;
+}
+.m1-bold {
+  font-family: "M PLUS 1 Code", monospace;
+  font-weight: 600;
 }

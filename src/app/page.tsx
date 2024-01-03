@@ -1,4 +1,17 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
 export default function Home() {
+  const footerContentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (footerContentRef.current) {
+        const contentWidth = footerContentRef.current.scrollWidth + 'px';
+        document.documentElement.style.setProperty('--content-width', contentWidth); // Setting the CSS variable
+    }
+  }, []);
+
   return (
     <div>
       <div className='container mx-auto flex justify-end'>
@@ -22,8 +35,15 @@ export default function Home() {
           </div>
       </div>
       <div className='footer'>
-        <div className='py-4 text-black'>
-          hello
+        <div className='footer-content backlit py-4 flex flex-row'>
+          {[1, 2, 3].map((_, i) => (
+            <div key={i} className="flex flex-row space-x-32 pl-32" ref={footerContentRef}>
+              <p className="footer-text">Join The <span className="m1-bold">MLRC</span></p>
+              <p className="footer-text">Practice with <span className="m1-bold">Chesski</span></p>
+              <p className="footer-text">Read My <span className="m1-bold">Substack</span></p>
+              <p className="footer-text">Check out my <span className="m1-bold">ML Research</span></p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
