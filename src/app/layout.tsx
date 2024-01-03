@@ -16,7 +16,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com"  />
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=M+PLUS+1+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&family=M+PLUS+1+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         <link rel="icon" href="/cursor.svg" />
       </head>
       <body>{children}</body>

@@ -42,6 +42,15 @@ body {
   font-size: 20px;
   line-height: 24px;
 }
+
+.terminal {
+  font-family: "Fira Code", monospace;
+  font-size: 40px;
+  font-weight: 300;
+  letter-spacing: -1px;
+  color: #00E500;
+}
+
 .footer {
   border-top: 2px solid #00E500;
   position: absolute;

@@ -15,6 +15,9 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <div className="terminal flex justify-center pt-8">
+        Coming Soon.
+      </div>
       <div className='footer'>
         <div className='py-4 text-black'>
           hello
