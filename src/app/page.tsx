@@ -1,14 +1,28 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import Link from "next/link";
+import { useCallback, useEffect, useRef } from "react";
 
 export default function Home() {
   const footerContentRef = useRef<HTMLDivElement>(null);
+  const scrollContentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (footerContentRef.current) {
         const contentWidth = footerContentRef.current.scrollWidth + 'px';
         document.documentElement.style.setProperty('--content-width', contentWidth); // Setting the CSS variable
+    }
+  }, []);
+
+  const stopScroll = useCallback(() => {
+    if (scrollContentRef.current) {
+      scrollContentRef.current.style.animationPlayState = 'paused';
+    }
+  }, []);
+
+  const resumeScroll = useCallback(() => {
+    if (scrollContentRef.current) {
+      scrollContentRef.current.style.animationPlayState = 'running';
     }
   }, []);
 
@@ -34,14 +48,14 @@ export default function Home() {
             Coming Soon.
           </div>
       </div>
-      <div className='footer'>
-        <div className='footer-content backlit py-4 flex flex-row'>
+      <div className='footer' onMouseEnter={stopScroll} onMouseLeave={resumeScroll}>
+        <div className='footer-content backlit py-4 flex flex-row' ref={scrollContentRef}>
           {[1, 2, 3].map((_, i) => (
             <div key={i} className="flex flex-row space-x-32 pl-32" ref={footerContentRef}>
-              <p className="footer-text">Join The <span className="m1-bold">MLRC</span></p>
-              <p className="footer-text">Practice with <span className="m1-bold">Chesski</span></p>
-              <p className="footer-text">Read My <span className="m1-bold">Substack</span></p>
-              <p className="footer-text">Check out my <span className="m1-bold">ML Research</span></p>
+              <Link className="link" target="_blank" href="https://mlresearch.club"><p className="footer-text">Join The <span className="m1-bold">MLRC</span></p></Link>
+              <Link className="link" target="_blank" href="https://app.chesski.lol"><p className="footer-text">Practice with <span className="m1-bold">Chesski</span></p></Link>
+              <Link className="link" target="_blank" href="https://broskiblogs.substack.com/"><p className="footer-text">Read My <span className="m1-bold">Substack</span></p></Link>
+              <Link className="link" target="_blank" href="https://broskicodes.notion.site/broskicodes/broski-s-research-notes-39d707ae2f1b451da6692387c57f24a8"><p className="footer-text">Check out my <span className="m1-bold">ML Research</span></p></Link>
             </div>
           ))}
         </div>

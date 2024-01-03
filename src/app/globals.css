@@ -44,7 +44,7 @@ body {
 }
 .backlit {
   filter: blur(0.7px);
-  text-shadow: 2px 2px 24px rgba(0, 255, 0, 0.7);
+  text-shadow: 2px 2px 32px rgba(0, 255, 0, 0.7), 0px 0px 16px rgba(0, 255, 0, 0.4);
 }
 
 .terminal {
@@ -58,6 +58,7 @@ body {
   border-top-left-radius: 8px;
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
+  box-shadow: 0px 0px 128px rgba(196, 196, 1196, 0.4), 0px 0px 32px rgba(0, 255, 0, 0.1);
 }
 
 @keyframes pan-overlay {
@@ -125,7 +126,6 @@ body {
 .footer-content {
   animation: horizontal-scroll 24s linear infinite;
 }
-
 .footer-text {
   color:#00E500;
   font-family: "M PLUS 1 Code", monospace;
@@ -134,4 +134,12 @@ body {
 .m1-bold {
   font-family: "M PLUS 1 Code", monospace;
   font-weight: 600;
+}
+.link {
+  text-decoration: none;
+  transition: text-decoration 0.3s ease;
+}
+.link:hover {
+  text-decoration: underline;
+  color: #00E500;
 }
