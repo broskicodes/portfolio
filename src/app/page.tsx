@@ -1,5 +1,6 @@
 "use client";
 
+import { Terminal } from "@/components/terminal";
 import Link from "next/link";
 import { useCallback, useEffect, useRef } from "react";
 
@@ -42,12 +43,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="terminal mx-auto mt-4">
-        <div className="terminal-overlay" />
-          <div className="terminal-content terminal-text flex justify-center pt-8 backlit">
-            Coming Soon.
-          </div>
-      </div>
+      <Terminal />
       <div className='footer' onMouseEnter={stopScroll} onMouseLeave={resumeScroll}>
         <div className='footer-content backlit py-4 flex flex-row' ref={scrollContentRef}>
           {[1, 2, 3].map((_, i) => (
