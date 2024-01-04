@@ -138,6 +138,8 @@ body {
   /* outline: none; */
   /* box-shadow: 0px 0px 16px rgba(255, 255, 255, 0.6); */
   animation: blink 1.5s step-start 0s infinite;
+  animation-play-state: paused;
+  outline: 1px solid #FFF;
 }
 
 .footer {
