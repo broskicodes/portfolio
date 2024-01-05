@@ -28,6 +28,11 @@ body {
   background: #000;
 }
 
+ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
 .details {
   font-family: "M PLUS 1 Code", monospace;
   color: #00E500;
@@ -107,21 +112,22 @@ body {
 }
 .terminal-text {
   font-family: "Fira Code", monospace;
-  font-size: 24px;
+  font-size: 20px;
+  line-height: 24px;
   font-weight: 400;
   letter-spacing: -1px;
   color: #FFF;
 }
 .terminal-prompt {
   font-family: "M PLUS 1 Code", monospace;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 500;
   color: #00E500;
 }
 #terminal-prompt-symbol {
   font-family: "M PLUS 1 Code", monospace;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 20px;
   color: #FFF;
 }
 
@@ -132,8 +138,8 @@ body {
   }
 }
 #terminal-cursor {
-  width: 12px;            
-  height: 24px;
+  width: 8px;            
+  height: 20px;
   background-color: #FFF;
   /* outline: none; */
   /* box-shadow: 0px 0px 16px rgba(255, 255, 255, 0.6); */
