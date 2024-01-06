@@ -1,5 +1,6 @@
 "use client";
 
+import { useTerminal } from "@/contexts/TermianlProvider";
 import { Terminal } from "@/components/terminal";
 import Link from "next/link";
 import { useCallback, useEffect, useRef } from "react";
@@ -7,6 +8,8 @@ import { useCallback, useEffect, useRef } from "react";
 export default function Home() {
   const footerContentRef = useRef<HTMLDivElement>(null);
   const scrollContentRef = useRef<HTMLDivElement>(null);
+
+  const { isFocused } = useTerminal();
 
   useEffect(() => {
     if (footerContentRef.current) {
@@ -29,8 +32,12 @@ export default function Home() {
 
   return (
     <div>
-      <div className='container mx-auto flex justify-end'>
-        <div className='details w-fit mt-16'>
+      <div className='container mx-auto  mt-16 flex flex-row justify-between'>
+        <div className={`terminal-text  flex flex-col space-y-2 ${isFocused ? "opacity-100" : "opacity-0"}`}>
+          <div className="font-semibold">Use `help` for command options</div>
+          <div className="font-semibold">Type `Esc` key to exit terminal</div>
+        </div>
+        <div className='details w-fit'>
           <div className='about backlit'>
             <p className='about-header'>BRAEDEN_HALL</p>
             <p className='about-subheader'>SOFTWARE_DEVELOPER</p>

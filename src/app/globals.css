@@ -130,6 +130,29 @@ ul {
   font-size: 20px;
   color: #FFF;
 }
+.terminal-blur {
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  background-color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+}
+.terminal-blur:hover {
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.terminal-blur-text {
+  font-family: "Fire Code", monospace;
+  font-size: 32px;
+  font-weight: 600;
+  color: #00E500;
+}
 
 @keyframes blink {
   50% {

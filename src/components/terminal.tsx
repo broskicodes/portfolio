@@ -1,3 +1,4 @@
+import { useTerminal } from "@/contexts/TermianlProvider";
 import { KeyboardEvent, useCallback, useEffect, useRef, useState } from "react"
 import ReactMarkdown from 'react-markdown';
 
@@ -105,9 +106,12 @@ export const Terminal = ({ }: TerminalProps) => {
   const [userInput, setUserInput] = useState<string>('')
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [outputHistory, setOutputHistory] = useState<string[]>([]);
+
   const terminalRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+
+  const { isFocused, toggleFocus } = useTerminal();
 
   const handleTerminalClick = useCallback(() => {
     document.body.style.cursor = 'none';
@@ -117,6 +121,7 @@ export const Terminal = ({ }: TerminalProps) => {
 
   const handleBlur = useCallback(() => {
     document.body.style.cursor = '';
+    toggleFocus(false);
     blurCursor();
   }, []);
 
@@ -191,6 +196,11 @@ export const Terminal = ({ }: TerminalProps) => {
     <div>
       <div className="terminal mx-auto mt-4" tabIndex={0} onClick={handleTerminalClick} onBlur={handleBlur} onKeyDown={handleKeyDown} ref={terminalRef}>
         <div className="terminal-overlay" />
+        {!isFocused && (
+          <div className="terminal-blur flex justify-center items-center" onClick={() => toggleFocus(true)}>
+            <p className="terminal-blur-text backlit">Click to Interact</p>
+          </div>
+        )}
         <div className="terminal-content terminal-text flex flex-col py-2 px-6" ref={contentRef}>
           <div className="flex flex-col">
             {commandHistory.map((command, i) => (
