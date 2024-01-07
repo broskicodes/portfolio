@@ -32,12 +32,12 @@ export default function Home() {
 
   return (
     <div>
-      <div className='container mx-auto  mt-16 flex flex-row justify-between'>
-        <div className={`terminal-text  flex flex-col space-y-2 ${isFocused ? "opacity-100" : "opacity-0"}`}>
+      <div className='container mx-auto  mt-16 flex flex-row justify-end sm:justify-between'>
+        <div className={`terminal-text  spd-hide flex flex-col space-y-2 ${isFocused ? "opacity-100" : "opacity-0"}`}>
           <div className="font-semibold">Use `help` for command options</div>
           <div className="font-semibold">Type `Esc` key to exit terminal</div>
         </div>
-        <div className='details w-fit'>
+        <div className='details w-fit pr-4 sm:pr-0'>
           <div className='about backlit'>
             <p className='about-header'>BRAEDEN_HALL</p>
             <p className='about-subheader'>SOFTWARE_DEVELOPER</p>
@@ -51,6 +51,10 @@ export default function Home() {
         </div>
       </div>
       <Terminal />
+      <div className="spd-show spd-message flex flex-col space-y-8">
+        <div className="font-bold text-xl">This website is not meant to be experienced on moblie.</div>
+        <div className="font-normal text-lg">Please pull out your laptop :)</div>
+      </div>
       <div className='footer' onMouseEnter={stopScroll} onMouseLeave={resumeScroll}>
         <div className='footer-content backlit py-4 flex flex-row' ref={scrollContentRef}>
           {[1, 2, 3].map((_, i) => (

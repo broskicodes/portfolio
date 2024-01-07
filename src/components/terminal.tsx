@@ -194,7 +194,7 @@ export const Terminal = ({ }: TerminalProps) => {
 
   return (
     <div>
-      <div className="terminal mx-auto mt-4" tabIndex={0} onClick={handleTerminalClick} onBlur={handleBlur} onKeyDown={handleKeyDown} ref={terminalRef}>
+      <div className="terminal mx-auto sm:mt-16 md:mt-20 lg:mt-4" tabIndex={0} onClick={handleTerminalClick} onBlur={handleBlur} onKeyDown={handleKeyDown} ref={terminalRef}>
         <div className="terminal-overlay" />
         {!isFocused && (
           <div className="terminal-blur flex justify-center items-center" onClick={() => toggleFocus(true)}>
