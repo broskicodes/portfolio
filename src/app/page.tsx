@@ -62,7 +62,7 @@ export default function Home() {
               <Link className="link" target="_blank" href="https://mlresearch.club"><p className="footer-text">Join The <span className="m1-bold">MLRC</span></p></Link>
               <Link className="link" target="_blank" href="https://app.chesski.lol"><p className="footer-text">Practice with <span className="m1-bold">Chesski</span></p></Link>
               <Link className="link" target="_blank" href="https://broskiblogs.substack.com/"><p className="footer-text">Read My <span className="m1-bold">Substack</span></p></Link>
-              <Link className="link" target="_blank" href="https://broskicodes.notion.site/broskicodes/broski-s-research-notes-39d707ae2f1b451da6692387c57f24a8"><p className="footer-text">Check out my <span className="m1-bold">ML Research</span></p></Link>
+              <Link className="link" target="_blank" href="https://broskicodes.notion.site/broskicodes/broski-s-research-notes-39d707ae2f1b451da6692387c57f24a8"><p className="footer-text">Check out my <span className="m1-bold">ML Research Notes</span></p></Link>
             </div>
           ))}
         </div>

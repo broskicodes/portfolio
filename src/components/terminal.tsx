@@ -43,7 +43,7 @@ If you wanna talk to me about anything, the best way to reach me is on **twitter
 - **Chesski:** An LLM chess coach that helps explain mistakes in your games
 - **Sparkski:** An AI assistant that tries to get to know and summarize your personality
 - **MLRC:** The Machine Learning Research Club. A weekly book club style community for ML tinkerers
-- **Libski:** Semantic search for ML research papers
+- **SLMs:** A small language model that I trained for telling short stories
 
 You may have noticed I have a default naming convention :)`;
     }
@@ -70,7 +70,7 @@ Use **view --help** for available options`
 
 Usage: **view <subcommand>**
 
-Subcommands: chesski, email, github, libski, mlrc, sparkski, substack, twitter`;
+Subcommands: chesski, email, github, libski, mlrc, sparkski, slm, substack, twitter`;
           case 'twitter':
             window.open('https://twitter.com/_broskitweets');
             return "Opening https://twitter.com/_broskitweets";
@@ -94,6 +94,10 @@ Subcommands: chesski, email, github, libski, mlrc, sparkski, substack, twitter`;
             return "Opening https://lib.broski.lol";
           case 'email':
             window.open('mailto:braeden@brhall.dev');
+            return "Opening email to braeden@brhall.dev"
+          case 'slm':
+            window.open('https://huggingface.co/broskicodes/simple-stories-4M');
+            return "Opening https://huggingface.co/broskicodes/simple-stories-4M";
           default:
             return "Invalid subcommand. Use **view --help** for available options";
         }
