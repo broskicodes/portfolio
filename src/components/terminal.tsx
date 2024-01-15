@@ -108,7 +108,9 @@ Subcommands: chesski, email, github, libski, mlrc, sparkski, slm, substack, twit
 
 export const Terminal = ({ }: TerminalProps) => {
   const [userInput, setUserInput] = useState<string>('')
+  const [commandIndex, setCommandIndex] = useState<number>(0);
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
+  const [displayHistory, setDisplayHistory] = useState<string[]>([]);
   const [outputHistory, setOutputHistory] = useState<string[]>([]);
 
   const terminalRef = useRef<HTMLDivElement>(null);
@@ -134,8 +136,23 @@ export const Terminal = ({ }: TerminalProps) => {
       terminalRef.current?.blur();
     } else if (event.key === 'Backspace') {
       setUserInput(userInput.slice(0, userInput.length - 1));
+    } else if (event.key === 'ArrowUp') {
+      if (commandHistory.length > commandIndex) {
+        setUserInput(commandHistory[commandHistory.length - (commandIndex + 1)]);
+        setCommandIndex(commandIndex + 1);
+      }
+    } else if (event.key === 'ArrowDown') {
+      if (commandIndex <= 1) {
+        setUserInput('');
+        setCommandIndex(0);
+      } else if (commandIndex <= commandHistory.length) {
+        setUserInput(commandHistory[commandHistory.length - (commandIndex - 1)]);
+        setCommandIndex(commandIndex - 1);
+      } 
     } else if (event.key === 'Enter') {
+      setCommandIndex(0);
       setCommandHistory([...commandHistory, userInput]);
+      setDisplayHistory([...displayHistory, userInput]);
       const command = userInput.split(' ')[0];
 
       if (!command) {
@@ -146,8 +163,8 @@ export const Terminal = ({ }: TerminalProps) => {
 
       if (command === 'clear') {
         setUserInput('');
+        setDisplayHistory([]);
         setOutputHistory([]);
-        setCommandHistory([]);
         return;
       }
 
@@ -155,7 +172,6 @@ export const Terminal = ({ }: TerminalProps) => {
         const args = userInput.split(' ').slice(1);
         const commandObj = terminalCommands.find(c => c.command === command);
         if (commandObj) {
-          console.log(commandObj.action(args));
           setOutputHistory([...outputHistory, commandObj.action(args)]);
         }
       } else {
@@ -168,7 +184,7 @@ export const Terminal = ({ }: TerminalProps) => {
     } else if (event.key.length === 1) {
       setUserInput(userInput + event.key);
     }
-  }, [userInput, commandHistory, outputHistory]);
+  }, [userInput, commandHistory, displayHistory, outputHistory, commandIndex]);
 
   const focusCursor = useCallback(() => {
     if (cursorRef.current) {
@@ -207,7 +223,7 @@ export const Terminal = ({ }: TerminalProps) => {
         )}
         <div className="terminal-content terminal-text flex flex-col py-2 px-6" ref={contentRef}>
           <div className="flex flex-col">
-            {commandHistory.map((command, i) => (
+            {displayHistory.map((command, i) => (
               <div key={i} className="flex flex-col">
                 <div className="flex flex-row items-center h-fit">
                   <span className="terminal-prompt mr-2 ">anon@brhall.dev<span id="terminal-prompt-symbol">$</span></span> <span className="terminal-text" dangerouslySetInnerHTML={renderInput(command)} />
